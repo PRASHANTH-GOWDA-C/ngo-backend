@@ -46,3 +46,17 @@ exports.getRecommendations = (req, res) => {
     }
   );
 };
+
+exports.getAllDonations = (req, res) => {
+  db.query(
+    `SELECT dn.*, c.title AS campaign, n.name AS ngo_name
+     FROM Donation dn
+     LEFT JOIN Campaign c ON dn.campaign_id = c.campaign_id
+     LEFT JOIN NGO n ON c.ngo_id = n.ngo_id
+     ORDER BY dn.donated_at DESC`,
+    (err, result) => {
+      if (err) return res.status(500).json(err);
+      res.json(result);
+    }
+  );
+};

@@ -29,3 +29,7 @@ const eventRoutes = require("./routes/eventRoutes");
 app.use("/api/volunteers", volunteerRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/participation", eventRoutes);
+
+app.use(cors({
+  origin: '*'
+}));

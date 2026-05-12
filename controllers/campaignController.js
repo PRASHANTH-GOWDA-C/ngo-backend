@@ -1,4 +1,4 @@
-const db = require("../config/db");
+const db = require("..db/config/db");
 
 exports.getAllCampaigns = (req, res) => {
   console.log("campaigns route hit");
